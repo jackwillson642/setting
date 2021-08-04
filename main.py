@@ -1,13 +1,21 @@
 import os
 import shutil
+import time
 
-# exefile = input("Enter path to the exe:\n")
-# source = os.path.split(exefile)[1]
-# settings = input("Enter path to folder containing textfiles:\n")
-
-exefile = "/home/jack/programming/python/setting/src/test.exe"
+exefile = input("Enter path to the exe:\n")
 source = os.path.split(exefile)[0]
-settings = "/home/jack/programming/python/setting/settings/"
+settings = input("Enter path to folder containing textfiles:\n")
+
+# If you wish to hard code the paths of exefile and textfiles directory
+# exefile = ""
+# source = os.path.split(exefile)[0]
+# settings = ""
+
+print("The path to the directory containing exe file: " + source)
+print("The path to the directory containing text files: " + settings)
+print("\n\n")
+
+time.sleep(1)
 
 listfiles = os.scandir(settings)
 
@@ -22,6 +30,7 @@ for filename in textfiles:
     dest = os.path.join(source, filename)
     shutil.copyfile(src, dest)  # Copy the text file to the source directory
     print(f"{src} copied to {dest}\n")
+    time.sleep(1)
     os.system(exefile)  # Execute the program
 
 input("Press Enter to exit")
